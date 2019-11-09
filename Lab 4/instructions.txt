@@ -1,0 +1,26 @@
+instructions to implement:
+
+R type (5):
+add 
+sub 
+and  
+or  
+sll
+srl
+
+
+I type (5): 
+addi 
+lb
+sb
+lw
+sw
+beq
+bne
+
+J type (3):
+J
+JAL
+
+
+Bonus instructions: 
