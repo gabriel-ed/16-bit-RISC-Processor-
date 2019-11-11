@@ -13,7 +13,6 @@ end regfile;
 architecture simple of regfile is
 
     
-    signal clock_sig : std_logic;
     type reg_type is array (0 to 7) of std_logic_vector(15 downto 0);
     signal reg_arr : reg_type := (x"0000", x"0000", x"0000", x"0000", x"0000", x"0000", x"0000", x"0000");
     signal wb_data : std_logic_vector(15 downto 0); -- write back from memory or ALU operation
