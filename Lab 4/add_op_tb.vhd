@@ -7,28 +7,28 @@ end alu_tb;
 architecture behavioral of alu_tb is
 
 	constant max_delay : time := 20 ns;
-	constant no_elems  : integer := 9;
-    constant alu_elems : integer := 9;
+	constant no_elems  : integer := 6;
+    constant alu_elems : integer := 6;
 	type input_value_array is array (1 to no_elems) of std_logic_vector(15 downto 0);
-	type aluop_array is array (1 to alu_elems) of std_logic_vector(3 downto 0);
-	constant data1_vals: input_value_array := ("0000000001001100", "0000000101000000", "0000000001001100", "0000000101000000","0000000001001100", "0000000101000000", "0000000001001100", "0000000101000000", x"0000");
-	constant data2_vals: input_value_array := ("0000000000001111", "0000000001000000", "0000000000001111", "0000000001000000","0000000000001111", "0000000001000000", "0000000000001111", "0000000001000000", x"0000");
-	constant aluop : aluop_array := ("0000","0000","0001", "0001", "0010", "0010", "0011", "0011", "0000");
-    
+	type aluop_array is array (1 to alu_elems) of std_logic_vector(2 downto 0);
+	constant data1_vals: std_logic_vector(15 downto 0) := (x"00B5");
+	constant data2_vals: std_logic_vector(15 downto 0) := (x"00B5");
+	constant aluop : aluop_array := ("000","001", "010", "011", "100", "101");  
     
     signal data1_sig, data2_sig : std_logic_vector(15 downto 0);
-    signal aluop_sig : std_logic_vector(3 downto 0);
-    signal zero_sig : std_logic;
+    signal aluop_sig : std_logic_vector(2 downto 0);
+    signal zero_sig : std_logic;     
     signal result_sig : std_logic_vector(15 downto 0);
     
 	begin
-		stimulus : process
+            
+	stimulus : process
         begin
             for i in 1 to no_elems loop
-                data1_sig <= data1_vals(i);
-                data2_sig <= data2_vals(i);
+                data1_sig <= data1_vals;
+                data2_sig <= data2_vals;
                 aluop_sig <= aluop(i);
-                wait for max_delay;
+                wait for max_delay/2;
             end loop;
         end process stimulus;
         
