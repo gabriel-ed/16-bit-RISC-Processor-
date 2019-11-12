@@ -5,7 +5,7 @@ use ieee.numeric_std.all;
 entity PC is
 	port(clk    : in std_logic;
          inst_addr:	in std_logic_vector(15 downto 0);
-		 inst_fetch	:	out std_logic_vector(3 downto 0));
+		 inst_fetch	:	out std_logic_vector(15 downto 0));
 end PC;
 
 architecture simple of PC is

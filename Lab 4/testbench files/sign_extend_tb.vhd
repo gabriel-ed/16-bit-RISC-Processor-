@@ -6,8 +6,8 @@ end sign_extend_tb;
 
 architecture behavioral of sign_extend_tb is
 
-    constant data1 : std_logic_vector(5 downto 0) := "001011";
-    signal data1_sig : std_logic_vector(5 downto 0);
+    constant data1 : std_logic_vector(11 downto 0) := x"A34";
+    signal data1_sig : std_logic_vector(11 downto 0);
     signal outdata_sig : std_logic_vector(15 downto 0);
     
     begin
