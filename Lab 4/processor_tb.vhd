@@ -11,6 +11,7 @@ architecture behavior of processor_tb is
     signal pc_sig   : std_logic_vector(15 downto 0);
     signal count : integer := 0;
     signal flush : integer := 0;
+    signal count_cycle : integer := 0;
     constant no_instructions : integer := 15;
     constant ClkFreq : integer := 100e6; --20 MHz
     constant ClkPer  : time := 1000 ms / ClkFreq;
@@ -24,6 +25,12 @@ architecture behavior of processor_tb is
             clock <= NOT clock after ClkPer/2;
         end process stimulus;
 	
+	cycles : process(clock)
+	begin
+	    if rising_edge(clock) then
+	    count_cycle <= count_cycle + 1;
+	    end if;
+	end process cycles;
 	flush_count : process(clock)
 	begin
 	    if(rising_edge(clock)) then
